@@ -9,7 +9,7 @@ platform :android do
             app: "1:609456568928:android:be2ed96af2a2bc14292105",
             firebase_cli_token: ENV["FIREBASE_CLI_TOKEN"],
             android_artifact_type: "APK",
-            android_artifact_path: "../build/app/outputs/flutter-apk/app-dev-release.apk",
+            android_artifact_path: "../build/app/outputs/flutter-apk/app-release.apk",
             groups: "dev_team",
             release_notes: "Adding more Features and enhancements to the app",
         )
