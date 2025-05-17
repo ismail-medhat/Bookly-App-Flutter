@@ -1,6 +1,6 @@
 class AppFonts {
   const AppFonts._();
 
-  static const roboto = 'Roboto';
-  static const gessTwo = 'GE SS Two';
+  static const pacifico = 'Pacifico';
+  static const gtSextraFine = 'GT Sectra Fine';
 }

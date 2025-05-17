@@ -7,7 +7,7 @@ ThemeData getLightTheme() {
   return ThemeData(
     scaffoldBackgroundColor: AppColors.grey0,
     brightness: Brightness.light,
-    fontFamily: AppFonts.roboto,
+    fontFamily: AppFonts.pacifico,
     colorScheme: ColorScheme.fromSeed(
       seedColor: AppColors.primary300,
       brightness: Brightness.light,
