@@ -5,9 +5,6 @@ on:
     branches:
       - dev_release_ci_cd
 
-env:
-  FIREBASE_CLI_TOKEN: ${{ secrets.FIREBASE_CLI_TOKEN }}
-
 jobs:
   build:
     runs-on: macos-latest
@@ -42,7 +39,7 @@ jobs:
         run: flutter pub get
 
       - name: Run Fastlane
-        run: |
-          echo "Using Firebase CLI token: $FIREBASE_CLI_TOKEN"
-          bundle exec fastlane upload_apk
+        run: bundle exec fastlane upload_apk
         working-directory: android
+        env:
+          FIREBASE_CLI_TOKEN: ${{ secrets.FIREBASE_CLI_TOKEN }}
