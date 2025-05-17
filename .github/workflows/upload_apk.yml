@@ -8,6 +8,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      FIREBASE_CLI_TOKEN: ${{ secrets.FIREBASE_CLI_TOKEN }}
 
     steps:
       - name: Checkout code
@@ -41,5 +43,3 @@ jobs:
       - name: Run Fastlane
         run: bundle exec fastlane upload_apk
         working-directory: android
-        env:
-          FIREBASE_CLI_TOKEN: ${{ secrets.FIREBASE_CLI_TOKEN }}
