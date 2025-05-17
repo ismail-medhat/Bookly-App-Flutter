@@ -1,0 +1,45 @@
+name: Android Release
+
+on:
+  push:
+    branches:
+      - dev_release_ci_cd
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.3.4
+
+      - name: Install dependencies
+        run: |
+          gem install bundler
+          bundle install
+        working-directory: android
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          distribution: "temurin"
+          java-version: "17"
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.27.3"
+
+      - name: Get Flutter dependencies
+        run: flutter pub get
+
+      - name: Run Fastlane
+        run: bundle exec fastlane upload_apk
+        working-directory: android
+        env:
+          FIREBASE_CLI_TOKEN: ${{ secrets.FIREBASE_CLI_TOKEN }}

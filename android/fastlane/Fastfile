@@ -1,0 +1,17 @@
+default_platform(:android)
+
+platform :android do
+  desc "Lane for Android Firebase App Distribution"
+  lane :upload_apk do
+    sh "flutter clean"
+    sh "flutter build apk --flavor dev --release --target lib/main/main_dev.dart --no-tree-shake-icons"
+    release = firebase_app_distribution(
+            app: "1:609456568928:android:be2ed96af2a2bc14292105",
+            firebase_cli_token: ENV["FIREBASE_CLI_TOKEN"],
+            android_artifact_type: "APK",
+            android_artifact_path: "../build/app/outputs/flutter-apk/app-dev-release.apk",
+            groups: "dev_team",
+            release_notes: "Adding more Features and enhancements to the app",
+        )
+  end
+end
